@@ -1,1 +1,97 @@
+h1 {
+    font-family: 'Indie Flower';
+    font-size: 40px;
+}
 
+html {
+    height: 100%;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    display: block;
+}
+
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-image: url("res/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(252, 242, 250, 0.89);
+}
+
+.container {
+    display: block;
+    background-image: linear-gradient(336deg, rgba(45, 48, 64, 0.761) 0%, rgba(84, 86, 105, 0.761) 95%);
+    border-radius: 2.5rem;
+    padding: 20px;
+    border-style: solid;
+    border-width: 2px 2px 0px 2px;
+    border-color: #B5A9D6;
+    backdrop-filter: blur(0.4rem);
+}
+
+.pfp {
+    display: flex;
+}
+
+.pfp img {
+    border-radius: 50%;
+    height: 115px;
+    padding-right: 1rem;
+}
+
+.pfp h1 {
+    padding-top: 2.5rem;
+    margin: 0rem;
+}
+
+.lang {
+    text-align: right;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #B3D1FF;
+}
+
+h2 span {
+    color: #B5A9D6;
+}
+
+.separation {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.music {
+    text-align: center;
+}
+
+form {}
+
+input {
+    width: 100%;
+    height: 3rem;
+    margin: 0.3rem;
+    color: rgba(252, 242, 250, 0.89);
+    background-image: linear-gradient(85deg, rgba(130, 103, 207, 0.71) 0%, rgba(181, 169, 214, 0.008) 100%);
+    text-align: left;
+    border-style: dashed;
+    border-radius: 2.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #B5A9D6;
+}
+
+p {
+    margin: 0%;
+}
