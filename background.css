@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    height: 100vh;
+    height: 100%;
     margin: 0;
     background-image: url("res/background.jpg");
     background-position: center;
@@ -151,6 +151,13 @@ code {
     fill: rgba(84, 86, 105, 0.761);
 }
 
+.blue {
+    color: rgba(179, 209, 255, 0.761);
+}
+
+.purple {
+    color: #B5A9D6;
+}
 
 /*responsive part*/
 @media screen and (max-width: 700px) {
@@ -183,7 +190,8 @@ code {
     }
 
     .pfp h1 {
-        font-size: 14px;
+        font-size: 16px;
+        padding-top: 1rem;
     }
 
     html {
@@ -191,6 +199,6 @@ code {
     }
 
     .separation {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
