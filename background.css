@@ -12,20 +12,21 @@ html {
 
 body {
     height: 100vh;
-    padding: 0;
     margin: 0;
     background-image: url("res/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     color: rgba(252, 242, 250, 0.89);
 }
-
-.container {
+.content{
     display: block;
+}
+.container {
     background-image: linear-gradient(336deg, rgba(45, 48, 64, 0.761) 0%, rgba(84, 86, 105, 0.761) 95%);
     border-radius: 2.5rem;
     padding: 20px;
@@ -41,7 +42,7 @@ body {
 
 .pfp img {
     border-radius: 50%;
-    height: 115px;
+    height: 110px;
     padding-right: 1rem;
 }
 
@@ -51,6 +52,7 @@ body {
 }
 
 .lang {
+    font-size: 10px;
     text-align: right;
     padding: 0rem;
     margin: 0rem;
@@ -74,9 +76,20 @@ h2 span {
 
 .music {
     text-align: center;
+    font-size: 12px;
+    margin: 0%;
+    padding: 0%;
 }
 
-form {}
+.buttons{
+    display: flex;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    
+}
+form{
+    display: flex;
+    flex-basis: 50%;
+}
 
 input {
     width: 100%;
@@ -94,4 +107,43 @@ input {
 
 p {
     margin: 0%;
+}
+
+.gif{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.gif img{
+    max-height: 160px;
+}
+
+code{
+    background-color: rgba(144, 144, 144, 0.25);
+    border-radius: 0.25em;
+    font-size: 0.9em;
+    letter-spacing: 0;
+    margin: 0 0.25em;
+    padding: 0.25em 0.5em;
+    text-indent: 0;
+}
+
+.socials{
+    display: flex;
+    justify-content: center;
+}
+
+.socials a{
+    margin: 0.5rem 1rem 0rem 1rem;
+}
+
+.socials a svg{
+    fill: rgba(179, 209, 255, 0.761);
+    width:20px ;
+    height:20px;
+}
+
+.socials a svg:hover{
+    fill: rgba(84, 86, 105, 0.761);
 }
