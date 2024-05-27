@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     background-image: url("res/background.jpg");
     background-position: center;
@@ -20,12 +20,13 @@ body {
     background-attachment: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
     color: rgba(252, 242, 250, 0.89);
 }
 
 .content {
     display: block;
+    margin: auto;
+    padding: auto;
 }
 
 .container {
