@@ -181,4 +181,8 @@ code {
     html {
         font-size: 10px;
     }
+
+    .separation {
+        font-size: 18px;
+    }
 }
