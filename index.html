@@ -22,7 +22,7 @@
             <p class="music"><i id="title">Stellar stellar</i><br>
                 <span id="artist">Hoshimachi Suisei</span><br>
                 <span id="time">01:43 </span>
-                <span class="blue">━━━━●</span><span class="purple">─────</span>
+                <span id="left-bar" class="blue">━━━━●</span><span id="right-bar" class="purple">─────</span>
                 <span id="len">03:50</span><br>
                 ⇆ㅤ ㅤ◁ㅤ ❚❚ ㅤ▷ ㅤㅤ↻<br>
             </p>
@@ -93,7 +93,7 @@
     </div>
     <script>
         async function getMusic() {
-            const url = "http://158.178.206.4:8000/current-song?state=9c03084c-9ab4-45ed-9cb8-8925b69f2a2c";
+            const url = "http://158.178.206.4:8000/current-song?state=9294e22a-7676-4b81-b00c-7c2771dc49a4";
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -120,6 +120,10 @@
             return hours + ':' + minutes + ':' + seconds;
         }
 
+        function computeRatio(a, b) {
+            return Math.floor((a / b) * 10);
+        }
+
         async function setMusic() {
             let json = await getMusic();
             console.log(json);
@@ -127,10 +131,24 @@
             document.getElementById('artist').textContent = json['artist'];
             document.getElementById('time').textContent = (json['progress_ms'] / 1000).toHHMMSS();
             document.getElementById('len').textContent = (json['duration_ms'] / 1000).toHHMMSS();
+            let ratio = (computeRatio(json['progress_ms'], json['duration_ms']));
+            let leftBar = "";
+            for (let i = 0; i < ratio - 1; i++) {
+                leftBar += "━";
+            }
+            leftBar += "●";
+            document.getElementById('left-bar').textContent = leftBar;
 
+            let rightBar = "";
+            for (let j = ratio; j < 10; j++) {
+                rightBar += "─";
+            }
+            document.getElementById('right-bar').textContent = rightBar;
+            console.log(leftBar, rightBar);
         }
 
         setMusic();
+        var t = setInterval(setMusic, 5000);
     </script>
 </body>
 
