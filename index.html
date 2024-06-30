@@ -7,6 +7,7 @@
     <title>Aeda</title>
     <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
     <link href="background.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -18,9 +19,11 @@
                 <h1>Aeda</h1>
             </div>
             <p class="separation">𓆝 𓆟 𓆞 𓆝 𓆟 𓆝 𓆟 𓆞 𓆝</p>
-            <p class="music"><i>Stellar stellar</i><br>
-                Hoshimachi Suisei<br>
-                01:43 <span class="blue">━━━━●</span><span class="purple">─────</span> 03:50<br>
+            <p class="music"><i id="title">Stellar stellar</i><br>
+                <span id="artist">Hoshimachi Suisei</span><br>
+                <span id="time">01:43 </span>
+                <span class="blue">━━━━●</span><span class="purple">─────</span>
+                <span id="len">03:50</span><br>
                 ⇆ㅤ ㅤ◁ㅤ ❚❚ ㅤ▷ ㅤㅤ↻<br>
             </p>
             <h2>About me <span>☆</span></h2>
@@ -88,6 +91,48 @@
             </a>
         </div>
     </div>
+    <script>
+        async function getMusic() {
+            const url = "http://158.178.206.4:8000/current-song?state=9c03084c-9ab4-45ed-9cb8-8925b69f2a2c";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        Number.prototype.toHHMMSS = function () {
+            var sec_num = parseInt(this, 10); // don't forget the second param
+            var hours = Math.floor(sec_num / 3600);
+            var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+            var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+            if (hours < 10) { hours = "0" + hours; }
+            if (minutes < 10) { minutes = "0" + minutes; }
+            if (seconds < 10) { seconds = "0" + seconds; }
+
+            if (hours === "00")
+                return minutes + ':' + seconds;
+            return hours + ':' + minutes + ':' + seconds;
+        }
+
+        async function setMusic() {
+            let json = await getMusic();
+            console.log(json);
+            document.getElementById('title').textContent = json['name'];
+            document.getElementById('artist').textContent = json['artist'];
+            document.getElementById('time').textContent = (json['progress_ms'] / 1000).toHHMMSS();
+            document.getElementById('len').textContent = (json['duration_ms'] / 1000).toHHMMSS();
+
+        }
+
+        setMusic();
+    </script>
 </body>
+
 
 </html>
