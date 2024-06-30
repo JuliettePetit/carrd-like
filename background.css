@@ -20,12 +20,12 @@ body {
     background-attachment: fixed;
     display: flex;
     justify-content: center;
+    align-items: center;
     color: rgba(252, 242, 250, 0.89);
 }
 
 .content {
     display: block;
-    margin: 1.5em auto;
 }
 
 .container {
@@ -95,13 +95,15 @@ h2 span {
     flex-direction: column;
 }
 
+
 .photos img {
     margin-top: 1em;
     margin-bottom: 1em;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
-    object-position: 25% 25%;
+    object-position: 50% 20%;
+    overflow-clip-margin: unset;
 }
 
 form {
@@ -216,4 +218,9 @@ code {
     .separation {
         font-size: 16px;
     }
+}
+
+.card img {
+    width: 300px;
+    height: 350px;
 }
