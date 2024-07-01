@@ -7,6 +7,7 @@
     <title>Aeda</title>
     <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
     <link href="background.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -17,8 +18,14 @@
                 <h1>Aeda</h1>
             </div>
             <p class="separation">𓆝 𓆟 𓆞 𓆝 𓆟 𓆝 𓆟 𓆞 𓆝</p>
-            <div class="photos">
-                <img>
+            <div class="photos" style="overflow: hidden;">
+                <div id="scroll-area">
+                    <div id="photos" style="display: flex; transform-origin: 50% 50%;">
+                        <img style="margin:0px" id="p1" src="res/gallery/bocchi.png">
+                        <img style="margin:0px" id="p2" src="res/gallery/gura.png">
+                        <img style="margin:0px" id="p3" src="res/gallery/bocchi.png">
+                    </div>
+                </div>
             </div>
             <div class="buttons">
                 <form action="index.html">
@@ -64,4 +71,34 @@
             </a>
         </div>
     </div>
+    <script>
+        var offset = 500;
+        var id = 0;
+        function setPhotos() {
+            let p2 = document.getElementById("p2");
+            let p3 = document.getElementById("p3");
+            p2.style.transform += "translate(0px, -500px)";
+            p3.style.transform += "translate(0px, -1000px)";
+        }
+        function doScroll() {
+            let photos = document.getElementById("photos");
+            let carousel = document.getElementById("scroll-area");
+            let lastKnownScrollPosition = 0;
+            let ticking = false;
+            carousel.addEventListener("wheel", function (event) {
+                if (event.deltaY > 0 && id < 2) {
+                    id++;
+                    carousel.scrollLeft += 100;
+                } else if (event.deltaY < 0 && id > 0) {
+                    id--;
+                    carousel.scrollLeft -= 100;
+                }
+                console.log(id);
+                photos.style.transform = "translate(" + offset * id * (-1) + "px, " + offset * id + "px)";
+                event.preventDefault();
+            });
+        }
+        setPhotos();
+        doScroll();
+    </script>
 </body>

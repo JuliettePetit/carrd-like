@@ -95,8 +95,8 @@ h2 span {
     flex-direction: column;
 }
 
-
-.photos img {
+.photos img,
+#scroll-area {
     margin-top: 1em;
     margin-bottom: 1em;
     width: 500px;
@@ -104,6 +104,18 @@ h2 span {
     object-fit: cover;
     object-position: 50% 20%;
     overflow-clip-margin: unset;
+}
+
+#scroll-area {
+    display: flex;
+}
+
+#photos {
+    transition: all 1s;
+}
+
+#scroll-area img {
+    margin-right: 1em;
 }
 
 form {
