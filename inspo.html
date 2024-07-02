@@ -72,8 +72,13 @@
         </div>
     </div>
     <script>
+        var len = document.getElementsByClassName("carousel-photos")[0].getBoundingClientRect().width;
         var offsetX = -50;
         var offsetY = 300;
+        if (len < 300) {
+            offsetX = -25;
+            offsetY = 150;
+        }
         var deg = "5";
         var id = 0;
 
@@ -103,11 +108,11 @@
                     rotatePhoto(id, "0");
                     id--;
                 }
-                //console.log(id);
                 photos.style.transform = "translate(" + (offsetX - offsetY) * id + "px, " + offsetY * id + "px)";
                 event.preventDefault();
             });
         }
+
         setPhotos();
         doScroll();
     </script>

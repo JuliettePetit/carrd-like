@@ -127,8 +127,8 @@ h2 span {
 }
 
 #scroll-area img {
-    width: 400px;
-    height: 400px;
+    width: 396px;
+    height: 396px;
     object-fit: cover;
     object-position: 50% 20%;
     transition: all 300ms;
@@ -247,6 +247,32 @@ code {
 
     .separation {
         font-size: 16px;
+    }
+
+    .carousel-photos {
+        width: 250px;
+        height: 250px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    #scroll-area {
+        display: flex;
+        align-items: center;
+        margin-left: 25px;
+    }
+
+    #photos {
+        transition: all 700ms;
+        display: flex;
+        transform-origin: 50% 50%;
+    }
+
+    #scroll-area img {
+        width: 199px;
+        height: 199px;
+        border: #B3D1FF solid 1px;
+        border-radius: 0px;
     }
 }
 
