@@ -91,29 +91,33 @@
             rotatePhoto(2, deg);
             rotatePhoto(3, deg);
         }
+        function doScroll(event) {
 
-        function doScroll() {
+            if (event.deltaY > 0 && id < 2) {
+                rotatePhoto(id + 1, deg);
+                rotatePhoto(id + 2, "0")
+                id++;
+
+            } else if (event.deltaY < 0 && id > 0) {
+                rotatePhoto(id + 1, deg);
+                rotatePhoto(id, "0");
+                id--;
+            }
+            photos.style.transform = "translate(" + (offsetX - offsetY) * id + "px, " + offsetY * id + "px)";
+            event.preventDefault();
+
+        }
+
+        function handleScroll() {
             let photos = document.getElementById("photos");
             let carousel = document.getElementById("scroll-area");
             let lastKnownScrollPosition = 0;
             let ticking = false;
-            carousel.addEventListener("wheel", function (event) {
-                if (event.deltaY > 0 && id < 2) {
-                    rotatePhoto(id + 1, deg);
-                    rotatePhoto(id + 2, "0")
-                    id++;
-
-                } else if (event.deltaY < 0 && id > 0) {
-                    rotatePhoto(id + 1, deg);
-                    rotatePhoto(id, "0");
-                    id--;
-                }
-                photos.style.transform = "translate(" + (offsetX - offsetY) * id + "px, " + offsetY * id + "px)";
-                event.preventDefault();
-            });
+            carousel.addEventListener("wheel", doScroll);
+            carousel.addEventListener("touchmove", doScroll);
         }
 
         setPhotos();
-        doScroll();
+        handleScroll();
     </script>
 </body>
