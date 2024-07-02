@@ -18,9 +18,9 @@
                 <h1>Aeda</h1>
             </div>
             <p class="separation">𓆝 𓆟 𓆞 𓆝 𓆟 𓆝 𓆟 𓆞 𓆝</p>
-            <div class="photos" style="overflow: hidden;">
+            <div class="carousel-photos">
                 <div id="scroll-area">
-                    <div id="photos" style="display: flex; transform-origin: 50% 50%;">
+                    <div id="photos">
                         <img style="margin:0px" id="p1" src="res/gallery/bocchi.png">
                         <img style="margin:0px" id="p2" src="res/gallery/gura.png">
                         <img style="margin:0px" id="p3" src="res/gallery/bocchi.png">
@@ -72,14 +72,21 @@
         </div>
     </div>
     <script>
-        var offset = 500;
+        var offsetX = -50;
+        var offsetY = 300;
+        var deg = "5";
         var id = 0;
-        function setPhotos() {
-            let p2 = document.getElementById("p2");
-            let p3 = document.getElementById("p3");
-            p2.style.transform += "translate(0px, -500px)";
-            p3.style.transform += "translate(0px, -1000px)";
+
+        function rotatePhoto(id, rotation) {
+            let photo = document.getElementById("p" + id);
+            console.log("p" + id + " = " + offsetX * (id - 1) + " && -" + offsetY * (id - 1));
+            photo.style.transform = "translate(" + offsetX * (id - 1) + "px, -" + offsetY * (id - 1) + "px) rotate(" + rotation + "deg)";
         }
+        function setPhotos() {
+            rotatePhoto(2, deg);
+            rotatePhoto(3, deg);
+        }
+
         function doScroll() {
             let photos = document.getElementById("photos");
             let carousel = document.getElementById("scroll-area");
@@ -87,14 +94,17 @@
             let ticking = false;
             carousel.addEventListener("wheel", function (event) {
                 if (event.deltaY > 0 && id < 2) {
+                    rotatePhoto(id + 1, deg);
+                    rotatePhoto(id + 2, "0")
                     id++;
-                    carousel.scrollLeft += 100;
+
                 } else if (event.deltaY < 0 && id > 0) {
+                    rotatePhoto(id + 1, deg);
+                    rotatePhoto(id, "0");
                     id--;
-                    carousel.scrollLeft -= 100;
                 }
-                console.log(id);
-                photos.style.transform = "translate(" + offset * id * (-1) + "px, " + offset * id + "px)";
+                //console.log(id);
+                photos.style.transform = "translate(" + (offsetX - offsetY) * id + "px, " + offsetY * id + "px)";
                 event.preventDefault();
             });
         }
