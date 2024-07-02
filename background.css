@@ -61,8 +61,8 @@ body {
 }
 
 h2 {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     color: #B3D1FF;
 }
 
@@ -146,13 +146,16 @@ input {
     height: 3rem;
     margin: 0.3rem;
     color: rgba(252, 242, 250, 0.89);
-    background-image: linear-gradient(85deg, rgba(130, 103, 207, 0.71) 0%, rgba(181, 169, 214, 0.008) 100%);
-    text-align: left;
+    background-color: transparent;
+    background-image: linear-gradient(85deg, rgba(179, 209, 255, 0.4)0%, rgba(127, 81, 255, 0.1)30%, rgba(35, 4, 119, 0.1) 50%, rgba(127, 81, 255, 0.1)70%, rgba(179, 209, 255, 0.4)100%);
     border-style: dashed;
     border-radius: 2.5rem;
     border-style: solid;
     border-width: 2px;
     border-color: #B5A9D6;
+    text-align: center;
+    font-size: larger;
+    font-variant-caps: all-petite-caps;
 }
 
 p {
