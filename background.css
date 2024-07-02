@@ -217,6 +217,7 @@ code {
 
     body {
         height: fit-content;
+        position: fixed;
     }
 
     .content {
@@ -275,7 +276,6 @@ code {
         width: 199px;
         height: 199px;
         border: #B3D1FF solid 1px;
-        border-radius: 0px;
     }
 }
 

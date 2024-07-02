@@ -21,7 +21,7 @@
             <div class="carousel-photos">
                 <div id="scroll-area">
                     <div id="photos">
-                        <img style="margin:0px" id="p1" src="res/gallery/bocchi.png">
+                        <img style="margin:0px" id="p1" src="res/gallery/bocchi.png" style="z-index:1;">
                         <img style="margin:0px" id="p2" src="res/gallery/gura.png">
                         <img style="margin:0px" id="p3" src="res/gallery/bocchi.png">
                     </div>
@@ -75,36 +75,40 @@
         var len = document.getElementsByClassName("carousel-photos")[0].getBoundingClientRect().width;
         var offsetX = -50;
         var offsetY = 300;
+        var opacity = 0.33;
         if (len < 300) {
             offsetX = -25;
             offsetY = 150;
         }
         var deg = "5";
         var id = 0;
+        var startY;
 
-        function rotatePhoto(id, rotation) {
+        function rotatePhoto(id, rotation, opacity, zind) {
             let photo = document.getElementById("p" + id);
             console.log("p" + id + " = " + offsetX * (id - 1) + " && -" + offsetY * (id - 1));
             photo.style.transform = "translate(" + offsetX * (id - 1) + "px, -" + offsetY * (id - 1) + "px) rotate(" + rotation + "deg)";
+            photo.style.opacity = opacity;
+            photo.style.zIndex = zind;
         }
         function setPhotos() {
-            rotatePhoto(2, deg);
-            rotatePhoto(3, deg);
+            rotatePhoto(2, deg, opacity, 0);
+            rotatePhoto(3, deg, opacity, 0);
         }
-        function doScroll(event) {
-            if (event.deltaY > 0 && id < 2) {
-                rotatePhoto(id + 1, deg);
-                rotatePhoto(id + 2, "0")
+
+        function doScroll(e, deltaY) {
+            if (deltaY > 0 && id < 2) {
+                rotatePhoto(id + 1, deg, opacity, 0);
+                rotatePhoto(id + 2, "0", 1, 1)
                 id++;
 
-            } else if (event.deltaY < 0 && id > 0) {
-                rotatePhoto(id + 1, deg);
-                rotatePhoto(id, "0");
+            } else if (deltaY < 0 && id > 0) {
+                rotatePhoto(id + 1, deg, opacity, 0);
+                rotatePhoto(id, "0", 1, 1);
                 id--;
             }
             photos.style.transform = "translate(" + (offsetX - offsetY) * id + "px, " + offsetY * id + "px)";
-            event.preventDefault();
-
+            e.preventDefault();
         }
 
         function handleScroll() {
@@ -112,10 +116,13 @@
             let carousel = document.getElementById("scroll-area");
             let lastKnownScrollPosition = 0;
             let ticking = false;
-            carousel.addEventListener("wheel", doScroll);
-            carousel.addEventListener("touchmove", doScroll);
-        }
+            carousel.addEventListener("wheel", (e) => doScroll(e, e.deltaY));
 
+            carousel.addEventListener("touchstart", (e) => {
+                startY = e.touches[0].clientY;
+            });
+            carousel.addEventListener("touchmove", (e) => doScroll(e, e.touches[0].clientY - startY));
+        }
         setPhotos();
         handleScroll();
     </script>
