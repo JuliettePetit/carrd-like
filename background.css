@@ -95,11 +95,14 @@ h2 span {
     flex-direction: column;
 }
 
+.photos-gallery {
+    display: flex;
+}
+
 .photos img {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 500px;
-    height: 500px;
+    margin: 0.5em;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     object-position: 50% 20%;
     overflow-clip-margin: unset;

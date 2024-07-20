@@ -7,6 +7,7 @@
     <title>Aeda</title>
     <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
     <link href="background.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -17,26 +18,44 @@
                 <h1>Aeda</h1>
             </div>
             <p class="separation">𓆝 𓆟 𓆞 𓆝 𓆟 𓆝 𓆟 𓆞 𓆝</p>
-            <div class="photos">
-                <img src="res/gallery/gura.png">
-                <img src="res/gallery/bocchi.png">
-                <img src="res/gallery/jellyfish.png">
-                <img src="res/gallery/departure.jpg">
-                <img src="res/gallery/sagrada.jpg">
-                <img src="res/gallery/japan.jpg">
-                <img src="res/gallery/cybercafe.jpg">
-                <img src="res/gallery/golddd.png">
-                <img src="res/gallery/setup.jpg">
-                <img src="res/gallery/sky.jpg">
+            <div class="carousel-photos">
+                <div id="scroll-area">
+                    <div id="photos">
+                        <!-- <img style="margin:0px" id="p1" src="res/gallery/bocchi.png" style="z-index:1;">
+                        <img style="margin:0px" id="p2" src="res/gallery/gura.png">
+                        <img style="margin:0px" id="p3" src="res/gallery/bocchi.png"> -->
+                        <a href="res/gallery/gura.png" target="_blank"> <img style="margin:0px; z-index:1" id="p1"
+                                src="res/gallery/gura.png"> </a>
+                        <a href="res/gallery/bocchi.png" target="_blank"> <img style="margin:0px" id="p2"
+                                src="res/gallery/bocchi.png"> </a>
+                        <a href="res/gallery/jellyfish.png" target="_blank"> <img style="margin:0px" id="p3"
+                                src="res/gallery/jellyfish.png"> </a>
+                        <a href="res/gallery/departure.jpg" target="_blank"> <img style="margin:0px" id="p4"
+                                src="res/gallery/departure.jpg"> </a>
+                        <a href="res/gallery/sagrada.jpg" target="_blank"> <img style="margin:0px" id="p5"
+                                src="res/gallery/sagrada.jpg"></a>
+                        <a href="res/gallery/japan.jpg" target="_blank"> <img style="margin:0px" id="p6"
+                                src="res/gallery/japan.jpg"></a>
+                        <a href="res/gallery/cybercafe.jpg" target="_blank"> <img style="margin:0px" id="p7"
+                                src="res/gallery/cybercafe.jpg"></a>
+                        <a href="res/gallery/golddd.png" target="_blank"> <img style="margin:0px" id="p8"
+                                src="res/gallery/golddd.png"></a>
+                        <a href="res/gallery/setup.jpg" target="_blank"> <img style="margin:0px" id="p9"
+                                src="res/gallery/setup.jpg"></a>
+                        <a href="res/gallery/sky.jpg" target="_blank"> <img style="margin:0px" id="p10"
+                                src="res/gallery/sky.jpg"></a>
+                    </div>
+                </div>
             </div>
             <div class="buttons">
                 <form action="index.html">
                     <input type="submit" value="home" />
                 </form>
-                <form action="inspo.html">
-                    <input type="submit" value="inspo" />
+                <form action="gallery.html">
+                    <input type="submit" value="gallery" />
                 </form>
             </div>
+
         </div>
         <div class="socials">
             <a href="https://myanimelist.net/profile/OniAeda" aria-label="MyAnimeList">
@@ -72,4 +91,64 @@
             </a>
         </div>
     </div>
+    <script>
+        var len = document.getElementsByClassName("carousel-photos")[0].getBoundingClientRect().width;
+        var offsetX = -50;
+        var offsetY = 300;
+        var opacity = 0.33;
+        if (len < 300) {
+            offsetX = -25;
+            offsetY = 150;
+        }
+        var deg = "5";
+        var id = 0.0;
+        var startY;
+
+        function rotatePhoto(id, rotation, opacity, zind) {
+            let photo = document.getElementById("p" + id);
+            photo.style.transform = "translate(" + offsetX * (id - 1) + "px, -" + offsetY * (id - 1) + "px) rotate(" + rotation + "deg)";
+            photo.style.opacity = opacity;
+            photo.style.zIndex = zind;
+        }
+        function setPhotos() {
+            for (let i = 2; i < 11; i++) {
+                rotatePhoto(i, deg, opacity, 0);
+            }
+        }
+
+        function doScroll(e, deltaY) {
+            if (deltaY > 0 && id < 8.9) {
+                if ((id / 0.1) % 5 >= 4) {
+                    rotatePhoto(Math.floor(id) + 1, deg, opacity, 0);
+                    rotatePhoto(Math.floor(id) + 2, "0", 1, 1)
+                }
+                id += 0.1;
+            } else if (deltaY < 0 && id > 0.1) {
+                console.log((id / 0.1) % 5);
+                if ((id / 0.1) % 5 <= 1) {
+                    rotatePhoto(Math.ceil(id) + 1, deg, opacity, 0);
+                    rotatePhoto(Math.ceil(id), "0", 1, 1);
+                }
+                id -= 0.1;
+            }
+            photos.style.transform = "translate(" + (offsetX - offsetY) * id + "px, " + offsetY * id + "px)";
+            //e.preventDefault();
+        }
+
+        function handleScroll() {
+            let photos = document.getElementById("photos");
+            let carousel = document.getElementById("scroll-area");
+            let lastKnownScrollPosition = 0;
+            let ticking = false;
+            carousel.addEventListener("wheel", (e) => doScroll(e, e.deltaY));
+
+            carousel.addEventListener("touchstart", (e) => {
+                startY = e.touches[0].clientY;
+                //console.log("TOUCHH" + startY);
+            });
+            carousel.addEventListener("touchmove", (e) => doScroll(e, (e.touches[0].clientY - startY)));
+        }
+        setPhotos();
+        handleScroll();
+    </script>
 </body>
