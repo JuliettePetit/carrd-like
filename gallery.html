@@ -4,9 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aeda</title>
     <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
     <link href="background.css" rel="stylesheet">
+
+    <!-- Primary Meta Tags -->
+    <title>Aeda</title>
+    <meta name="title" content="Aeda" />
+    <meta name="description" content="Welcome to my personnal site !" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://carrd.aeda.dev/" />
+    <meta property="og:title" content="Aeda" />
+    <meta property="og:description" content="Welcome to my personnal site !" />
+    <meta property="og:image" content="https://carrd.aeda.dev/res/pfp.jpg" />
+    <!--<meta property="og:site_name" content="Personal website <3" />-->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://carrd.aeda.dev/" />
+    <meta property="twitter:title" content="Aeda" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="https://carrd.aeda.dev/res/pfp.jpg" />
 
 </head>
 
@@ -41,6 +60,8 @@
                                 src="res/gallery/setup.jpg"></a>
                         <a href="res/gallery/sky.jpg" target="_blank"> <img style="margin:0px" id="p10"
                                 src="res/gallery/sky.jpg"></a>
+                        <a href="res/gallery/me.jpg" target="_blank"> <img style="margin:0px" id="p11"
+                                src="res/gallery/me.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -100,6 +121,7 @@
         var deg = "5";
         var id = 0.0;
         var startY;
+        var nb_photos = 11;
 
         function rotatePhoto(id, rotation, opacity, zind) {
             let photo = document.getElementById("p" + id);
@@ -108,20 +130,19 @@
             photo.style.zIndex = zind;
         }
         function setPhotos() {
-            for (let i = 2; i < 11; i++) {
+            for (let i = 2; i < nb_photos + 1; i++) {
                 rotatePhoto(i, deg, opacity, 0);
             }
         }
 
         function doScroll(e, deltaY) {
-            if (deltaY > 0 && id < 8.9) {
+            if (deltaY > 0 && id < nb_photos - 2 + 0.9) {
                 if ((id / 0.1) % 5 >= 4) {
                     rotatePhoto(Math.floor(id) + 1, deg, opacity, 0);
                     rotatePhoto(Math.floor(id) + 2, "0", 1, 1)
                 }
                 id += 0.1;
-            } else if (deltaY < 0 && id > 0.1) {
-                console.log((id / 0.1) % 5);
+            } else if (deltaY < 0 && id > 0) {
                 if ((id / 0.1) % 5 <= 1) {
                     rotatePhoto(Math.ceil(id) + 1, deg, opacity, 0);
                     rotatePhoto(Math.ceil(id), "0", 1, 1);
