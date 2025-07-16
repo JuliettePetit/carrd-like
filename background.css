@@ -34,17 +34,19 @@ body {
     padding: 20px;
     border-style: solid;
     border-width: 2px 2px 0px 2px;
-    border-color: #B5A9D6;
+    border-color: #a18dd6;
     backdrop-filter: blur(0.4rem);
 }
 
 .pfp {
     display: flex;
+    justify-items: center;
+    align-items: flex-end;
 }
 
-.pfp img {
+.pfp>img {
     border-radius: 50%;
-    height: 110px;
+    height: 150px;
     padding-right: 1rem;
 }
 
@@ -67,13 +69,13 @@ h2 {
 }
 
 h2 span {
-    color: #B5A9D6;
+    color: #a18dd6;
 }
 
 .separation {
     font-size: 28px;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .music {
@@ -129,6 +131,32 @@ h2 span {
     transform-origin: 50% 50%;
 }
 
+.image-likes {
+    color: #B5A9D6;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gif {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    color: #B5A9D6;
+    text-align: center;
+}
+
+.gif img {
+    max-width: 200px;
+    border: 0.2em dashed rgba(179, 209, 255, 0.761);
+}
+
+.image-likes img {
+    max-width: 200px;
+    border: 0.2em dashed rgba(179, 209, 255, 0.761);
+}
+
 #scroll-area img {
     width: 396px;
     height: 396px;
@@ -155,7 +183,7 @@ input {
     border-radius: 2.5rem;
     border-style: solid;
     border-width: 2px;
-    border-color: #B5A9D6;
+    border-color: #a18dd6;
     text-align: center;
     font-size: larger;
     font-variant-caps: all-petite-caps;
@@ -163,16 +191,6 @@ input {
 
 p {
     margin: 0%;
-}
-
-.gif {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-}
-
-.gif img {
-    max-height: 160px;
 }
 
 code {
@@ -209,7 +227,7 @@ code {
 }
 
 .purple {
-    color: #B5A9D6;
+    color: #a18dd6;
 }
 
 /* pinterest part */
