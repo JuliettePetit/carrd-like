@@ -26,6 +26,7 @@ body {
 
 .content {
     display: block;
+    margin: 1em;
 }
 
 .container {
@@ -99,6 +100,12 @@ h2 span {
 
 .photos-gallery {
     display: flex;
+}
+
+.home-images-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
 }
 
 .photos img {
@@ -244,7 +251,6 @@ code {
 
     body {
         height: fit-content;
-        position: fixed;
     }
 
     .content {
@@ -253,7 +259,8 @@ code {
     }
 
     .pfp img {
-        height: 40px;
+        max-height: 100px;
+        max-width: 150px;
         padding-right: 1rem;
     }
 
@@ -263,7 +270,7 @@ code {
     }
 
     .gif img {
-        max-width: 100%;
+        max-width: 200px;
         height: auto;
     }
 
@@ -278,6 +285,15 @@ code {
 
     .separation {
         font-size: 16px;
+    }
+
+    .home-images-container {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        justify-content: center;
+        text-align: center;
     }
 
     .carousel-photos {
