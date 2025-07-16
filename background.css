@@ -131,6 +131,10 @@ h2 span {
     transform-origin: 50% 50%;
 }
 
+#photos img {
+    aspect-ratio: 1 / 1;
+}
+
 .image-likes {
     color: #B5A9D6;
     text-align: center;
@@ -290,6 +294,10 @@ code {
     }
 
     #photos {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        image-rendering: auto;
         transition: all 700ms;
         display: flex;
         transform-origin: 50% 50%;
